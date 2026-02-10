@@ -1,12 +1,15 @@
 import { motion } from 'framer-motion';
 import ScrollReveal from '@/components/ScrollReveal';
+import chairpersonImg from '@/assets/chairperson.png';
+import secretaryImg from '@/assets/secretary.png';
+import assistantSecretaryImg from '@/assets/assistant-secretary.png';
 
 const LeadershipSection = () => {
   const leaders = [
     {
       name: 'Mr. Eliud Sifuna',
       role: 'Chairperson',
-      icon: 'fa-user-tie',
+      image: chairpersonImg,
       description: 'Leading with vision and integrity'
     },
     {
@@ -18,13 +21,13 @@ const LeadershipSection = () => {
     {
       name: 'Mr. Brian',
       role: 'Secretary',
-      icon: 'fa-file-alt',
+      image: secretaryImg,
       description: 'Keeping records and communications'
     },
     {
       name: 'Miss. Janet Mbatha',
       role: 'Assistant Secretary',
-      icon: 'fa-user-check',
+      image: assistantSecretaryImg,
       description: 'Supporting administrative duties'
     }
   ];
@@ -58,8 +61,12 @@ const LeadershipSection = () => {
                 <div className="absolute inset-0 bg-gradient-gold rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity blur-xl" />
                 <div className="relative p-8 rounded-2xl bg-card border border-border group-hover:border-gold/50 transition-all text-center">
                   {/* Avatar */}
-                  <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-forest flex items-center justify-center">
-                    <i className={`fas ${leader.icon} text-3xl text-primary-foreground`} />
+                  <div className="w-24 h-24 mx-auto mb-6 rounded-full overflow-hidden bg-gradient-forest flex items-center justify-center">
+                    {leader.image ? (
+                      <img src={leader.image} alt={leader.name} className="w-full h-full object-cover" />
+                    ) : (
+                      <i className={`fas ${leader.icon} text-3xl text-primary-foreground`} />
+                    )}
                   </div>
                   
                   {/* Info */}
