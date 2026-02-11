@@ -255,17 +255,6 @@
     animation: pulse-glow 2s ease-in-out infinite;
   }
 
-  /* Dancing animation for welcome character */
-  @keyframes dance {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    25% { transform: translateY(-15px) rotate(-5deg); }
-    50% { transform: translateY(0) rotate(0deg); }
-    75% { transform: translateY(-15px) rotate(5deg); }
-  }
-
-  .animate-dance {
-    animation: dance 1s ease-in-out infinite;
-  }
 
   /* Golden Gate door animation */
   @keyframes door-open-left {

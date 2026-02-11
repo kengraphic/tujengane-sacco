@@ -6,7 +6,6 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
-import DancingCharacter from '@/components/DancingCharacter';
 import logo from '@/assets/logo.png';
 import { z } from 'zod';
 
@@ -240,15 +239,6 @@ const Auth = () => {
         className="w-full max-w-md"
       >
         <div className="golden-leaf-border rounded-2xl p-8 bg-card shadow-elevated">
-          {/* Dancing Character */}
-          <motion.div
-            initial={{ y: -20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="flex justify-center mb-6"
-          >
-            <DancingCharacter />
-          </motion.div>
 
           {/* Logo and Title */}
           <div className="text-center mb-8">
