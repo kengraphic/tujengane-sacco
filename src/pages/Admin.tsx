@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+
 import { supabase } from '@/integrations/supabase/client';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -138,11 +138,7 @@ const Admin = () => {
       <main className="pt-24 pb-12 px-4">
         <div className="container mx-auto max-w-6xl">
           {/* Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="mb-8"
-          >
+          <div className="mb-8">
             <div className="flex items-center gap-4 mb-4">
               <div className="w-12 h-12 rounded-lg bg-gradient-gold flex items-center justify-center">
                 <i className="fas fa-shield-alt text-xl text-primary" />
@@ -154,15 +150,10 @@ const Admin = () => {
                 <p className="text-muted-foreground">Manage TUJENGANE members</p>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Stats */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="grid sm:grid-cols-3 gap-4 mb-8"
-          >
+          <div className="grid sm:grid-cols-3 gap-4 mb-8">
             <Card className="premium-card border-yellow-200 bg-yellow-50">
               <CardHeader className="pb-2">
                 <CardDescription className="text-yellow-700">Pending Approval</CardDescription>
@@ -195,7 +186,7 @@ const Admin = () => {
                 </div>
               </CardContent>
             </Card>
-          </motion.div>
+          </div>
 
           {/* Tabs */}
           <div className="flex bg-muted rounded-lg p-1 mb-6 w-fit">
@@ -222,11 +213,7 @@ const Admin = () => {
           </div>
 
           {/* Members List */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-          >
+          <div>
             <Card className="premium-card">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
@@ -308,7 +295,7 @@ const Admin = () => {
                 )}
               </CardContent>
             </Card>
-          </motion.div>
+          </div>
         </div>
       </main>
     </div>

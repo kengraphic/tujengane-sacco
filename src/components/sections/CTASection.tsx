@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion';
+
+// framer-motion removed: using CSS transitions instead
 import ScrollReveal from '@/components/ScrollReveal';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
@@ -15,14 +16,9 @@ const CTASection = () => {
       <div className="container mx-auto px-4 relative z-10">
         <ScrollReveal>
           <div className="max-w-3xl mx-auto text-center">
-            <motion.div
-              initial={{ scale: 0.9 }}
-              whileInView={{ scale: 1 }}
-              transition={{ duration: 0.5 }}
-              className="mb-8"
-            >
+            <div className="mb-8 transform transition-transform duration-500">
               <i className="fas fa-handshake text-6xl text-gold mb-6 block" />
-            </motion.div>
+            </div>
 
             <h2 className="text-4xl md:text-5xl font-serif font-bold text-primary-foreground mb-6">
               Ready to Grow With Us?

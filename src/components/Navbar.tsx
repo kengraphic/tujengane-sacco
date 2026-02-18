@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+
 import { Menu, X, User, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { supabase } from '@/integrations/supabase/client';
@@ -55,12 +55,7 @@ const Navbar = () => {
   ];
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6 }}
-      className="fixed top-0 left-0 right-0 z-40 bg-card/90 backdrop-blur-md border-b border-gold/20"
-    >
+    <nav className="fixed top-0 left-0 right-0 z-40 bg-card/90 backdrop-blur-md border-b border-gold/20">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -128,12 +123,7 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden py-4 border-t border-border"
-          >
+          <div className="md:hidden py-4 border-t border-border">
             {navLinks.map((link) => (
               <a
                 key={link.name}
@@ -170,10 +160,10 @@ const Navbar = () => {
                 </>
               )}
             </div>
-          </motion.div>
+          </div>
         )}
       </div>
-    </motion.nav>
+    </nav>
   );
 };
 

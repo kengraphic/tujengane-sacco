@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
+
 
 interface ScrollRevealProps {
   children: React.ReactNode;
@@ -30,15 +30,14 @@ const ScrollReveal = ({ children, className = '', delay = 0 }: ScrollRevealProps
   }, []);
 
   return (
-    <motion.div
+    <div
       ref={ref}
-      initial={{ opacity: 0, y: 50 }}
-      animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-      transition={{ duration: 0.6, delay, ease: 'easeOut' }}
-      className={className}
+      className={`${className} transform transition-all duration-600 ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+      }`}
     >
       {children}
-    </motion.div>
+    </div>
   );
 };
 

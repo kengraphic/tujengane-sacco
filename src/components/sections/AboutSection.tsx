@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion';
+
+// framer-motion removed: using CSS hover transforms instead
 import ScrollReveal from '@/components/ScrollReveal';
 import logo from '@/assets/logo.png';
 
@@ -101,10 +102,9 @@ const AboutSection = () => {
         <ScrollReveal delay={0.6}>
           <div className="grid md:grid-cols-3 gap-8 mt-20">
             {values.map((value, index) => (
-              <motion.div
+              <div
                 key={index}
-                whileHover={{ y: -5 }}
-                className="p-8 rounded-2xl bg-card border border-border hover:border-gold/30 transition-all premium-card"
+                className="p-8 rounded-2xl bg-card border border-border hover:border-gold/30 transition-all premium-card transform transition-transform duration-300 hover:-translate-y-1"
               >
                 <div className="w-14 h-14 rounded-xl bg-gradient-gold flex items-center justify-center mb-6">
                   <i className={`fas ${value.icon} text-2xl text-primary`} />

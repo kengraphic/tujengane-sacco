@@ -1,7 +1,7 @@
 /// <reference types="vite/client" />
 /// <reference types="@react-three/fiber" />
 
-import { ThreeElements } from "@react-three/fiber";
+import type { ThreeElements } from "@react-three/fiber";
 
 declare global {
   namespace JSX {

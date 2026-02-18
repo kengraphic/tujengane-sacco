@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion';
+
+// framer-motion removed: using CSS hover transforms instead
 import ScrollReveal from '@/components/ScrollReveal';
 
 const ContactSection = () => {
@@ -43,10 +44,7 @@ const ContactSection = () => {
             }
           ].map((contact, index) => (
             <ScrollReveal key={index} delay={index * 0.1}>
-              <motion.div
-                whileHover={{ y: -5 }}
-                className="p-8 rounded-2xl bg-card border border-border hover:border-gold/30 transition-all text-center premium-card"
-              >
+              <div className="p-8 rounded-2xl bg-card border border-border hover:border-gold/30 transition-all text-center premium-card transform transition-transform duration-300 hover:-translate-y-1">
                 <div className="w-14 h-14 mx-auto mb-6 rounded-xl bg-gradient-gold flex items-center justify-center">
                   <i className={`fas ${contact.icon} text-xl text-primary`} />
                 </div>

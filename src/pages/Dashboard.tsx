@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+
 import { supabase } from '@/integrations/supabase/client';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -169,11 +169,7 @@ const Dashboard = () => {
       <main className="pt-24 pb-12 px-4">
         <div className="container mx-auto max-w-6xl">
           {/* Welcome Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="mb-8"
-          >
+          <div className="mb-8">
             <div className="flex items-center gap-4 mb-4">
               <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-gold bg-muted">
                 {profile?.avatar_url ? (
@@ -205,7 +201,7 @@ const Dashboard = () => {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Status Warning */}
           {profile?.status !== 'approved' && (

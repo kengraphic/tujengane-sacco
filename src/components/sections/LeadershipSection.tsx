@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion';
+
+// framer-motion removed: use CSS hover/transform utilities instead
 import ScrollReveal from '@/components/ScrollReveal';
 import chairpersonImg from '@/assets/chairperson.png';
 import secretaryImg from '@/assets/secretary.png';
@@ -52,12 +53,8 @@ const LeadershipSection = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {leaders.map((leader, index) => (
-            <ScrollReveal key={index} delay={index * 0.1}>
-              <motion.div
-                whileHover={{ y: -10, scale: 1.02 }}
-                transition={{ duration: 0.3 }}
-                className="relative group"
-              >
+              <ScrollReveal key={index} delay={index * 0.1}>
+              <div className="relative group transform transition-transform duration-300 hover:-translate-y-2 hover:scale-105">
                 <div className="absolute inset-0 bg-gradient-gold rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity blur-xl" />
                 <div className="relative p-8 rounded-2xl bg-card border border-border group-hover:border-gold/50 transition-all text-center">
                   {/* Avatar */}

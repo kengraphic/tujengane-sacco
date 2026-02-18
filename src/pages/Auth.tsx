@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+
 import { supabase } from '@/integrations/supabase/client';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -232,12 +232,7 @@ const Auth = () => {
 
   return (
     <div className="min-h-screen bg-background flex items-center justify-center p-4">
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5 }}
-        className="w-full max-w-md"
-      >
+      <div className="w-full max-w-md">
         <div className="golden-leaf-border rounded-2xl p-8 bg-card shadow-elevated">
 
           {/* Logo and Title */}
@@ -279,14 +274,9 @@ const Auth = () => {
 
           {/* Form */}
           <form onSubmit={handleSubmit} className="space-y-4">
-            <AnimatePresence mode="wait">
-              {mode === 'signup' && (
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: 'auto', opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  className="space-y-4"
-                >
+            <>
+                {mode === 'signup' && (
+                  <div className="space-y-4">
                   {/* Avatar Upload */}
                   <div className="text-center">
                     <Label className="text-sm font-medium">
@@ -350,9 +340,9 @@ const Auth = () => {
                       <span className="text-xs text-destructive">{errors.phone}</span>
                     )}
                   </div>
-                </motion.div>
+                </div>
               )}
-            </AnimatePresence>
+          </>
 
             {/* Email */}
             <div>
