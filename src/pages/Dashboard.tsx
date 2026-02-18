@@ -205,11 +205,7 @@ const Dashboard = () => {
 
           {/* Status Warning */}
           {profile?.status !== 'approved' && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="mb-8 p-4 rounded-lg bg-yellow-50 border border-yellow-200"
-            >
+            <div className="mb-8 p-4 rounded-lg bg-yellow-50 border border-yellow-200">
               <div className="flex items-start gap-3">
                 <i className="fas fa-exclamation-triangle text-yellow-600 mt-0.5" />
                 <div>
@@ -219,17 +215,12 @@ const Dashboard = () => {
                   </p>
                 </div>
               </div>
-            </motion.div>
+            </div>
           )}
 
           <div className="grid lg:grid-cols-3 gap-8">
             {/* Stats Cards */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="lg:col-span-2 grid sm:grid-cols-2 gap-4"
-            >
+            <div className="lg:col-span-2 grid sm:grid-cols-2 gap-4">
               <Card className="premium-card border-gold/20">
                 <CardHeader className="pb-2">
                   <CardDescription className="flex items-center gap-2">
@@ -271,14 +262,10 @@ const Dashboard = () => {
                   </div>
                 </CardContent>
               </Card>
-            </motion.div>
+            </div>
 
             {/* Make Contribution */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-            >
+            <div>
               <Card className="golden-leaf-border">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
@@ -341,16 +328,11 @@ const Dashboard = () => {
                   </Button>
                 </CardContent>
               </Card>
-            </motion.div>
+            </div>
           </div>
 
           {/* Contribution History */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="mt-8"
-          >
+          <div className="mt-8">
             <Card className="premium-card">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
@@ -404,7 +386,7 @@ const Dashboard = () => {
                 )}
               </CardContent>
             </Card>
-          </motion.div>
+          </div>
         </div>
       </main>
     </div>
