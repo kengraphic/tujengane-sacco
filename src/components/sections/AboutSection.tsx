@@ -111,7 +111,7 @@ const AboutSection = () => {
                 </div>
                 <h4 className="text-xl font-serif font-bold text-foreground mb-3">{value.title}</h4>
                 <p className="text-muted-foreground">{value.description}</p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </ScrollReveal>

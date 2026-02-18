@@ -400,7 +400,7 @@ const Auth = () => {
             </a>
           </div>
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 };

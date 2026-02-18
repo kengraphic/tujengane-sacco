@@ -62,7 +62,7 @@ const ContactSection = () => {
                 {contact.subtitle && (
                   <p className="text-sm text-gold mt-1">{contact.subtitle}</p>
                 )}
-              </motion.div>
+              </div>
             </ScrollReveal>
           ))}
         </div>

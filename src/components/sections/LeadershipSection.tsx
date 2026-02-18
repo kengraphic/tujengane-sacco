@@ -76,7 +76,7 @@ const LeadershipSection = () => {
                   {/* Decorative border */}
                   <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-16 h-1 bg-gradient-gold rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
-              </motion.div>
+              </div>
             </ScrollReveal>
           ))}
         </div>
