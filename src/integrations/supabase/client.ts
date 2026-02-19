@@ -2,11 +2,20 @@
 import { createClient } from '@supabase/supabase-js';
 import type { Database } from './types';
 
-const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
-const SUPABASE_PUBLISHABLE_KEY = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+const SUPABASE_URL = String(import.meta.env.VITE_SUPABASE_URL ?? '');
+const SUPABASE_PUBLISHABLE_KEY = String(import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY ?? '');
 
 // Import the supabase client like this:
 // import { supabase } from "@/integrations/supabase/client";
+
+if (!SUPABASE_URL || !SUPABASE_PUBLISHABLE_KEY) {
+  // Helpful runtime warning when env vars are not provided (e.g., on misconfigured deployments)
+  // This will appear in the browser console of the deployed site and help surface the root cause
+  // of "failed to fetch" errors when Supabase can't be reached due to missing configuration.
+  // Do NOT log secret keys in production; we only log existence here.
+  // eslint-disable-next-line no-console
+  console.error('[supabase] Missing VITE_SUPABASE_URL or VITE_SUPABASE_PUBLISHABLE_KEY environment variables.');
+}
 
 export const supabase = createClient<Database>(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, {
   auth: {
@@ -15,3 +24,20 @@ export const supabase = createClient<Database>(SUPABASE_URL, SUPABASE_PUBLISHABL
     autoRefreshToken: true,
   }
 });
+
+/**
+ * Debug helper: attempt a light request to the Supabase REST endpoint to confirm reachability.
+ * Call this from browser console (e.g., `window.__testSupabase()` after importing in a page) or
+ * wire it to a debug route during investigation. It returns an object with { ok, status, error }.
+ */
+export async function testSupabase() {
+  try {
+    if (!SUPABASE_URL) return { ok: false, status: 0, error: 'Missing SUPABASE_URL' };
+    // Supabase exposes a simple health-like path under /rest/v1/ but many projects may restrict it.
+    // We perform a fetch to the auth endpoint which should be available publicly.
+    const resp = await fetch(`${SUPABASE_URL.replace(/\/$/, '')}/auth/v1/`, { method: 'GET' });
+    return { ok: resp.ok, status: resp.status };
+  } catch (err: any) {
+    return { ok: false, status: 0, error: err?.message ?? String(err) };
+  }
+}
