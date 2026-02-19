@@ -134,19 +134,11 @@ const Auth = () => {
               description: error.message,
               variant: 'destructive',
             });
-          }
-        }
-      } else {
-        const validation = signUpSchema.safeParse(formData);
-        if (!validation.success) {
-          const fieldErrors: Record<string, string> = {};
-          validation.error.errors.forEach((err) => {
             if (err.path[0]) fieldErrors[err.path[0] as string] = err.message;
           });
           setErrors(fieldErrors);
           setLoading(false);
           return;
-        }
 
         if (!avatarFile) {
           setErrors({ avatar: 'Profile picture is required' });
@@ -166,13 +158,10 @@ const Auth = () => {
           if (authError.message.includes('already registered')) {
             toast({
               title: 'Email already registered',
-              description: 'This email is already in use. Please sign in instead.',
-              variant: 'destructive',
+            const { data: authData, error: authError } = await supabase.auth.signUp({
+              email: formData.email,
+              password: formData.password,
             });
-          } else {
-            toast({
-              title: 'Sign up failed',
-              description: authError.message,
               variant: 'destructive',
             });
           }
@@ -223,10 +212,10 @@ const Auth = () => {
       toast({
         title: 'Error',
         description: 'An unexpected error occurred. Please try again.',
-        variant: 'destructive',
-      });
-    } finally {
-      setLoading(false);
+              toast({
+                title: 'Account created!',
+                description: 'Your account has been created and is awaiting admin approval. You can sign in once an admin approves your membership.',
+              });
     }
   };
 
